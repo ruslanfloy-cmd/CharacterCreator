@@ -1,0 +1,10 @@
+black
+blond
+brown
+red
+gray
+dyed shades
+blue
+dark purple
+light pink
+coal 

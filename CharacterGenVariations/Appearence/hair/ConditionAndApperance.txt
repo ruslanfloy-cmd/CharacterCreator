@@ -1,0 +1,11 @@
+glossy
+dull
+frizzy
+sleek
+messy
+styled
+thick
+thin
+voluminous
+limp
+damaged
