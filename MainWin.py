@@ -1,8 +1,12 @@
 import tkinter as tk
+import os 
 import Generator as gce
 from tkinter import messagebox
 from tkinter import *
+from tkinter import filedialog
 
+
+SAVE_DIRECTORY = 'SavedCharacters/'
 
 def open_new_window():
     new_window = tk.Toplevel(root)
@@ -12,6 +16,7 @@ def open_new_window():
     create_menu(new_window)
 
 def generateChar():
+    global character
     character = gce.charGenerator()
     text = (
         f"Name: {character['name']}\n"
@@ -26,6 +31,38 @@ def generateChar():
     )
     char_text.set(text)
 
+def export_character_txt(filename="character.txt"):
+    if character is None:
+        messagebox.showwarning("Save", "No character generated yet!")
+        return
+    os.makedirs(SAVE_DIRECTORY, exist_ok=True)
+
+    filename = f"{character['name']}.txt"
+    path = os.path.join(SAVE_DIRECTORY, filename)
+
+    with open(path, "w", encoding="utf-8") as file:
+        file.write(gce.character_to_text(character))
+
+    messagebox.showinfo("Saved", f"Character saved to:\n{path}")
+
+def open_character_txt():
+    filepath = filedialog.askopenfilename(
+        title="Open character file",
+        filetypes=[("Text files", "*.txt")]
+    )
+
+    if not filepath:  # Cancel
+        return
+
+    load_character_from_txt(filepath)
+def load_character_from_txt(path):
+    global character
+
+    with open(path, "r", encoding="utf-8") as file:
+        text = file.read()
+
+    character = gce.character_from_text(text)
+    char_text.set(text)
 
 def show_about():
     messagebox.showinfo("About", "This is a Tkinter Settings Menu Example.")
@@ -43,8 +80,8 @@ def create_menu(root_window):
     file_menu = tk.Menu(menubar, tearoff=0)
     menubar.add_cascade(label="File", menu=file_menu)
     file_menu.add_command(label="New...", command= open_new_window)
-    file_menu.add_command(label="Open...", command=lambda: print("Option 2 selected"))
-    file_menu.add_command(label="Save...", command=lambda: print("Option 3 selected"))
+    file_menu.add_command(label="Open...", command=open_character_txt)
+    file_menu.add_command(label="Save...", command= export_character_txt)
     file_menu.add_separator()
     file_menu.add_command(label="Exit", command=root_window.destroy)
 

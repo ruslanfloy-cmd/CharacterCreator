@@ -1,0 +1,11 @@
+Name: Rona
+Gender: Male
+Age: 76
+Race: Dwarve
+Eyes: Violet
+Hair: black styled wavy coarse
+Height: Cm: 155 / Feet: 5.09
+Body: Plump (overweight)
+Traits: Secure, Herioc, Energetic, Obedient, Conservative, Opinionated, Cowardly, Mistaken
+Backstory: They lived for several years in another country, or several other countries.
+----------------------------------------
