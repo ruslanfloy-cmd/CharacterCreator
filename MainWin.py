@@ -46,7 +46,7 @@ except EOFError:
     pass  # reached end of GIF
 
 gif_label = tk.Label(root)
-gif_label.place(x=10, y=10)  # top-left corner
+gif_label.place(x=30, y=10)  # top-left corner
 
 def animate(frame=0):
     gif_label.config(image=photo_frames[frame])
