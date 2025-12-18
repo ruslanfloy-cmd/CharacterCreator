@@ -51,7 +51,7 @@ gif_label.place(x=10, y=10)  # top-left corner
 def animate(frame=0):
     gif_label.config(image=photo_frames[frame])
     frame = (frame + 1) % len(photo_frames)
-    root.after(10, lambda: animate(frame))
+    root.after(120, lambda: animate(frame))
 animate()
 
 
