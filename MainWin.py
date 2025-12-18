@@ -37,14 +37,21 @@ gif_image = Image.open(gif_file)
 frames = gif_image.n_frames
 photo_frames = [ImageTk.PhotoImage(file=gif_file, format=f"gif -index {i}") for i in range(frames)]
 
+photo_frames = [ImageTk.PhotoImage(gif_image.copy().convert("RGBA"))]
+try:
+    while True:
+        gif_image.seek(len(photo_frames))
+        photo_frames.append(ImageTk.PhotoImage(gif_image.copy().convert("RGBA")))
+except EOFError:
+    pass  # reached end of GIF
+
 gif_label = tk.Label(root)
 gif_label.place(x=10, y=10)  # top-left corner
 
 def animate(frame=0):
     gif_label.config(image=photo_frames[frame])
-    frame = (frame + 1) % frames
-    root.after(50, lambda: animate(frame))
-
+    frame = (frame + 1) % len(photo_frames)
+    root.after(10, lambda: animate(frame))
 animate()
 
 
