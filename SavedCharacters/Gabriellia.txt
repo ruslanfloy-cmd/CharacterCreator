@@ -1,0 +1,11 @@
+Name: Gabriellia
+Gender: Female
+Age: 31
+Race: Centaur
+Eyes: Amber
+Hair: blond sleek straight coarse
+Height: Cm: 177 / Feet: 5.81
+Body: Hunched (stooped, most likely old)
+Traits: Organized, Sporting, Admirable, Contradictory, Solitary, Well-meaning, Calculating, Mawkish
+Backstory: They were brainwashed and manipulated by a cult leader.
+----------------------------------------
