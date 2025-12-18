@@ -1,0 +1,11 @@
+Name: 
+Gender: 
+Age: 0
+Race: 
+Eyes: 
+Hair: 
+Height: 
+Body: 
+Traits: 
+Backstory: 
+----------------------------------------

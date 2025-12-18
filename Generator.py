@@ -155,5 +155,43 @@ def charGenerator():
         "backstory": random.choice(modifiedFileCharBackStories),
     }
 
+def character_to_text(character: dict) -> str:
+    return (
+        f"Name: {character['name']}\n"
+        f"Gender: {character['gender']}\n"
+        f"Age: {character['age']}\n"
+        f"Race: {character['race']}\n"
+        f"Eyes: {character['eyes']}\n"
+        f"Hair: {character['hair']}\n"
+        f"Height: {character['height']}\n"
+        f"Body: {character['body']}\n"
+        f"Traits: {', '.join(character['traits'])}\n"
+        f"Backstory: {character['backstory']}\n"
+        + "-" * 40 + "\n"
+    )
+
+def character_from_text(text: str) -> dict:
+    character = {}
+
+    for line in text.splitlines():
+        if not line.strip():
+            continue
+
+        if ":" not in line:
+            continue
+
+        key, value = line.split(":", 1)
+        key = key.strip().lower()
+        value = value.strip()
+
+        if key == "age":
+            character[key] = int(value)
+        elif key == "traits":
+            character[key] = [t.strip() for t in value.split(",")]
+        else:
+            character[key] = value
+
+    return character
+
 # __TEST__
-print(charGenerator()) 
+# print(charGenerator()) 
